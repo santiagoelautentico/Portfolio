@@ -1,0 +1,159 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Portfolio | Santiago Urbina">
+	<div class="bg-container">
+		<div class="bg-hero"></div>
+		<div class="bg-black"></div>
+	</div>
+	<header>
+		<Header />
+	</header>
+	<section>
+		<div class="container-card">
+			<img src="assets/fotoPrueba.webp" alt="Santiago Foto">
+			<ul class="content-card-container">
+				<div class="header-card">
+					<h1>URUGUAY</h1>
+					<h2>FRONTEND LICENSE</h2>
+				</div>
+				<ul class="content-card">
+					<li><span>NAME: </span>SANTIAGO URBINA</li>
+					<li><span>UNIVERSITY: </span>APP DESIGN IN ORT UNIVERSITY</li>
+					<li><span>SKILLS: </span>HTML / CSS / JAVASCRIPT / REACT.JS</li>
+					<li><span>CITY: </span>MONTEVIDEO</li>
+				</ul>	
+			</div>
+		</div>
+	</section>
+	
+</Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const card = document.querySelector('.container-card');
+
+		addEventListener('mousemove', (e) => {
+			rotateElement(e, card);
+		});
+
+		function rotateElement(event, element) {
+			const x = event.clientX;
+			const y = event.clientY;
+			const middleX = window.innerWidth / 2;
+			const middleY = window.innerHeight / 2;
+			const offsetX = ((x - middleX) / middleX) * 25;
+			const offsetY = ((y - middleY) / middleY) * 25;
+
+			element.style.setProperty("--rotateX", -1 * offsetY + "deg");
+			element.style.setProperty("--rotateY", offsetX + "deg");
+
+			console.log(offsetX, offsetY);
+			
+		}
+	});
+</script>
+
+<style>
+	:root {
+		--rotateX: 0;
+		--rotateY: 0;
+	}
+	header{
+		z-index: 100;
+		position: relative;
+	}
+	.bg-container{
+		position: fixed;
+		height: 100vh;
+		width: 100vw;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: -2rem;
+	}
+	.bg-hero{
+		position: fixed;
+		height: 90vh;
+		width: 100vw;
+		background-size: 40px 40px;
+		background-image:
+			linear-gradient(to right, grey 1px, transparent 1px),
+			linear-gradient(to bottom, grey 1px, transparent 1px);
+	}
+	.bg-black{
+		position: fixed;
+		height: 90vh;
+		width: 100vw;
+		z-index: 1;
+		background: radial-gradient(ellipse 50rem 25rem, #ffffff00, #0F0F0F);
+	}
+	section{
+		display: flex;
+		justify-content: center;
+	}
+	.container-card {
+		display: flex;
+		background-color: black;
+		padding: 2.5rem;
+		height: 55vh;
+		margin-top: 2rem;
+		border-radius: 15px;
+		gap: 3rem;
+		box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+		transform: perspective(5000px) rotateY(var(--rotateY)) rotateX(var(--rotateX));
+        transform-origin: center; /* Asegúrate de que el origen de la transformación esté centrado */
+	}
+	img {
+		aspect-ratio: 1/1;
+		height: 80%;
+		rotate: -1deg;
+	}
+	h1 {
+		font-size: 5.5rem;
+		margin: 0;
+		padding: 0;
+		font-family: helvetica-bold;
+	}
+	h2{
+		font-size: 3.5rem;
+		margin: 0;
+		padding: 0;
+		font-weight: 200;
+	}
+	.content-card{
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin-top: 2rem;
+		font-family: cascadia;
+		font-size: 1.5rem;
+	}
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li {
+		text-shadow: 0 0 0.3em white;
+	}
+	li span {
+		color: rgb(33, 206, 42);
+		text-shadow: 0 0 0.3em rgb(33, 206, 42);
+	}
+	@media (min-width: 1024px) and (max-width: 1440px) {
+        .container-card{
+			width: 75%;
+		}
+    }
+
+    /* Media query for desktops */
+    @media (min-width: 1441px) {
+       .container-card{
+			width: 55%;
+	   }
+    }
+</style>

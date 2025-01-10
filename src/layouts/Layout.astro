@@ -1,0 +1,41 @@
+---
+// filepath: /c:/Users/Santiago/Documents/Dev/portfolio/src/layouts/Layout.astro
+const { title } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+		<slot />
+	</body>
+</html>
+
+<style>
+	html,
+	body {
+		margin: 0;
+		width: 100%;
+		height: 100%;
+		color: white;
+		background-color: #0F0F0F;
+		font-family: helvetica;
+	}
+	@font-face {
+		font-family: helvetica;
+		src: url(../../public/fonts/Helvetica.ttf);
+	}
+	@font-face {
+		font-family: helvetica-bold;
+		src: url(../../public/fonts/Helvetica-Bold.ttf);
+	}
+	@font-face {
+		font-family: cascadia;
+		src: url(../../public/fonts/Cascadia.ttf);
+	}
+</style>

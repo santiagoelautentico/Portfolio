@@ -1,0 +1,39 @@
+---
+import Layout from "../layouts/Layout.astro"
+---
+
+<Layout>
+    <header>
+        <ul>
+            <li><a href="/">Top</a></li>
+            <li><a href="/work">Work</a></li>
+            <li>About Me</li>
+            <li>Contact</li>
+        </ul>
+    </header>
+</Layout>
+<style>
+    header{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 1rem;
+        z-index: 100;
+        color: #0F0F0F;
+    }
+    a{
+        text-decoration: none;
+        color: #0F0F0F;
+    }
+    ul {
+        list-style-type: none;
+        display: flex;
+        gap: 1rem;
+    }
+    li {
+        padding: 0.5rem;
+        background-color: #ffffff;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
