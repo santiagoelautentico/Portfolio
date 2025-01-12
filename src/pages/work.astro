@@ -1,7 +1,12 @@
 ---
 import LayoutInside from '../layouts/LayoutInside.astro';
 import Header from '../components/Header.astro';
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('work');
+
 const title = "My Work";
+console.log(works);
 ---
 <LayoutInside title={title}>
     <main>
