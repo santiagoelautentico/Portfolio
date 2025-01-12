@@ -1,9 +1,41 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import LayoutInside from '../layouts/LayoutInside.astro';
 import Header from '../components/Header.astro';
+const title = "My Work";
 ---
+<LayoutInside title={title}>
+    <main>
+        <header id="header">
+            <h2>My Work <span>Ten Projects</span></h2>
+            <Header />
+        </header>
+        <h1>Hola Mundo</h1>
+    </main>
+</LayoutInside>
 
-<Layout title="Work">
-    <Header />
-    <h1>Hola Mundo</h1>
-</Layout>
+<style>
+    #header {
+        display: flex;
+        justify-content: space-between;
+        padding-inline: 2rem;
+    }
+    h2 {
+        font-size: 4rem;
+        font-family: cascadia;
+        word-spacing: 0.5rem; /* Ajusta el valor según tus necesidades */
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    h2 span{
+        font-family: pixelFont;
+        font-size: 1.2rem;
+        word-spacing: normal;
+        margin-top: 12px;
+    }
+    main{
+        background-color: #181818;
+        border-radius: 30px;
+        height: calc(100vh - 6rem);
+    }
+</style>
