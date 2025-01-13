@@ -6,7 +6,7 @@ import Layout from "../layouts/Layout.astro"
     <header>
         <ul>
             <li><a href="/">Top</a></li>
-            <li><a href="/work">Work</a></li>
+            <li><a href="/works">Works</a></li>
             <li><a href="/about">About me</a></li>
             <li><a href="/contact">Contact</a></li>
         </ul>
@@ -17,8 +17,8 @@ import Layout from "../layouts/Layout.astro"
     if(window.location.pathname === "/"){
         const homeLink = document.querySelector("a[href='/']") as HTMLElement;
         if (homeLink) homeLink.style.color = "#2ec21e";
-    } else if(window.location.pathname === "/work"){
-        const workLink = document.querySelector("a[href='/work']") as HTMLElement;
+    } else if(window.location.pathname === "/works"){
+        const workLink = document.querySelector("a[href='/works']") as HTMLElement;
         if (workLink) workLink.style.color = "#2ec21e";
     } else if(window.location.pathname === "/about"){
         const aboutLink = document.querySelector("a[href='/about']") as HTMLElement;
@@ -36,7 +36,6 @@ import Layout from "../layouts/Layout.astro"
         align-items: center;
         padding: 1rem;
         z-index: 100;
-    }
     a {
         text-decoration: none;
         font-family: pixelFont;

@@ -1,0 +1,149 @@
+---
+import Header from '../components/Header.astro';
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const works = await getCollection('works');
+
+const title = "My Work";
+---
+<Layout title={title}>
+    <main>
+        <header id="header">
+            <span class="logo">Sougo</span>
+            <Header />
+        </header>
+        <div class="header-section">
+            <h2>My Work <span>Ten proyects</span></h2>
+            <hr>
+        </div>
+        <section class="works-container">
+            {works.map((work) => {
+                const { slug, data } = work;
+                const { number, title, img, description, date, where } = data
+                return (
+                    <div class="work-card">
+                        <a href={`/works/${slug}`}>
+                            <h3>{String(number).padStart(2, '0')} <span>{description}</span></h3>
+                            <img src={img} alt={title} transition:name={`img/${slug}`} />
+                            <footer class="work-card-footer">
+                                <h5>{where}</h5>
+                                <p>{date}</p>
+                            </footer>
+                            <div class="bg-black"></div>
+                            <div class="bg-squere"></div>
+                        </a>
+                    </div>
+                )
+            }
+        )}
+        </section>
+    </main>
+</Layout>
+
+<style>
+    #header{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+    }
+    .logo{
+        font-family: arial;
+        font-size: 2rem;
+        color: #ffffff;
+    }
+    .header-section{
+        margin-inline: 6rem
+    }
+    .header-section h2{
+        font-family: clashBold;
+        font-size: 8rem;
+        color: #ffffff;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 3.5rem;
+        margin-top: 0;
+    }
+    .header-section span{
+        font-family: pixelFont;
+        font-size: 2rem;
+        font-weight: 200;
+        color: #ffffff;
+        margin-top: 15px;
+    }
+    .header-section hr{
+        border: 1px solid #2ec21e;
+        border-radius: 2px;
+    }
+    .works-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
+        gap: 2rem;
+        margin-inline: 6rem;
+        margin-top: 8rem;
+    }
+    .work-card{
+        position: relative;
+    }
+    .bg-black{
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: -1;
+        background: radial-gradient(ellipse 30rem 28rem, #ffffff00, #0F0F0F);
+        top: 0;
+    }
+    .bg-squere{
+        top: 0rem;
+        position: absolute;
+		height: 100%;
+		width: 100%;
+		background-size: 40px 40px;
+        z-index: -2;
+		background-image:
+			linear-gradient(to right, grey 1px, transparent 1px),
+			linear-gradient(to bottom, grey 1px, transparent 1px);
+    }
+    .work-card img{
+        width: 100%;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index: 1000;
+    }
+    .work-card h3{
+        font-family: pixelFont;
+        font-size: 15rem;
+        font-weight: 200;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+        z-index: 1000;
+    }
+    .work-card span{
+        font-family: clashBold;
+        font-size: 3.5rem;
+        color: #ffffff;
+    }
+    .work-card-footer{
+        display: flex;
+        justify-content: space-between;
+        font-family: pixelFont;
+    }
+     h5{
+        font-weight: 200;
+        color: #2ec21e;
+        font-size: 1.2rem;
+     }
+     .work-card-footer p{
+        opacity: 0.5;
+        font-size: 1.2rem;
+     }
+     .work-card a{
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+     }
+</style>

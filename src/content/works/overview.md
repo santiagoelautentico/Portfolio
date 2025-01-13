@@ -1,7 +1,10 @@
 ---
+number: 1
 title: Overview
 img: overviewCover.webp
-description: Videogame website
+description: VideoGames Web
+date: march 2024
+where: University proyect
 urluno: https://www.google.com
 urldos: https://instagram.com
 tags: pepe

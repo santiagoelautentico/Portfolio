@@ -1,5 +1,6 @@
 ---
 // filepath: /c:/Users/Santiago/Documents/Dev/portfolio/src/layouts/Layout.astro
+import { ClientRouter } from "astro:transitions";
 const { title } = Astro.props;
 ---
 <!doctype html>
@@ -10,6 +11,7 @@ const { title } = Astro.props;
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<ClientRouter />
 	</head>
 	<body class="layout">
 		<slot />
@@ -26,15 +28,15 @@ const { title } = Astro.props;
 		height: 100%;
 		color: white;
 		background-color: #0F0F0F;
-		font-family: helvetica;
+		font-family: clash;
 	}
 	@font-face {
-		font-family: helvetica;
-		src: url(../../public/fonts/Helvetica.ttf);
+		font-family: 'clash';
+		src: url(/fonts/ClashDisplay-Regular.woff2);
 	}
 	@font-face {
-		font-family: helvetica-bold;
-		src: url(../../public/fonts/Helvetica-Bold.ttf);
+		font-family: clashBold;
+		src: url(../../public/fonts/ClashDisplay-Bold.woff2);
 	}
 	@font-face {
 		font-family: cascadia;
@@ -43,5 +45,6 @@ const { title } = Astro.props;
 	@font-face{
 		font-family: pixelFont;
 		src: url(../../public/fonts/PPMondwest-Regular.otf);
+        font-weight: 200;
 	}
 </style>

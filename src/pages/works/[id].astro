@@ -1,0 +1,24 @@
+---
+import { render } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+    const works = await getCollection('works');
+
+    return works.map((work) => ({
+        params: { id: work.slug },
+        props: { work }
+    }))
+}
+
+const { work } = Astro.props
+const { data, slug } = work
+const { number, title, img, description, date, where, urluno, urldos, tags } = data
+
+const { Content } = await render(work)
+---
+
+<Layout title={title}>
+    <img src={`/${img}`} alt={title} transition:name={`img/${slug}`} />
+</Layout>
