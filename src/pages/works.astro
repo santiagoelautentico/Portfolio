@@ -9,10 +9,7 @@ const title = "My Work";
 ---
 <Layout title={title}>
     <main>
-        <header id="header">
-            <span class="logo">Sougo</span>
-            <Header />
-        </header>
+        <Header />
         <div class="header-section">
             <h2>My Work <span>Ten proyects</span></h2>
             <hr>
@@ -54,7 +51,8 @@ const title = "My Work";
         color: #ffffff;
     }
     .header-section{
-        margin-inline: 6rem
+        margin-top: 10rem;
+        margin-inline: 10rem
     }
     .header-section h2{
         font-family: clashBold;
@@ -76,12 +74,13 @@ const title = "My Work";
     .header-section hr{
         border: 1px solid #2ec21e;
         border-radius: 2px;
+        width: 100%;
     }
     .works-container{
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(40%, 1fr));
         gap: 2rem;
-        margin-inline: 6rem;
+        margin-inline: 10rem;
         margin-top: 8rem;
     }
     .work-card{

@@ -2,12 +2,17 @@
 number: 1
 title: Overview
 img: overviewCover.webp
+video: overview.webm
 description: VideoGames Web
+description2: A videogame website 
 date: march 2024
 where: University proyect
 urluno: https://www.google.com
 urldos: https://instagram.com
-tags: pepe
+tags:   
+    - HTML
+    - CSS
+    - JavaScript
 ---
 
 Lorem Ipsum is simply dummy text of the printing and typesetting industry.

@@ -8,13 +8,11 @@ const work = getCollection('works');
 ---
 
 <Layout title="Portfolio | Santiago Urbina">
+	<Header />
 	<div class="bg-container">
 		<div class="bg-hero"></div>
 		<div class="bg-black"></div>
 	</div>
-	<header>
-		<Header />
-	</header>
 	<section>
 		<div class="container-card">
 			<img src="assets/imgCard.webp" alt="Santiago Foto">
@@ -65,10 +63,7 @@ const work = getCollection('works');
 		--rotateX: 0;
 		--rotateY: 0;
 	}
-	header{
-		z-index: 100;
-		position: relative;
-	}
+
 	.bg-container{
 		position: fixed;
 		height: 100vh;
@@ -76,7 +71,7 @@ const work = getCollection('works');
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		margin-top: -2rem;
+		margin-top: -9rem;
 	}
 	.bg-hero{
 		position: fixed;
@@ -97,6 +92,7 @@ const work = getCollection('works');
 	section{
 		display: flex;
 		justify-content: center;
+		margin-top: 10rem;
 	}
 	.container-card {
 		display: flex;

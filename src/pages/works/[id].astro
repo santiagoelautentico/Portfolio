@@ -2,7 +2,8 @@
 import { render } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import { getCollection } from 'astro:content';
-
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
 export async function getStaticPaths() {
     const works = await getCollection('works');
 
@@ -14,11 +15,199 @@ export async function getStaticPaths() {
 
 const { work } = Astro.props
 const { data, slug } = work
-const { number, title, img, description, date, where, urluno, urldos, tags } = data
+const { number, title, img, video, description, description2, date, where, urluno, urldos, tags } = data
 
 const { Content } = await render(work)
 ---
 
 <Layout title={title}>
-    <img src={`/${img}`} alt={title} transition:name={`img/${slug}`} />
+    <Header />
+    <header class="header-work">
+        <h1>{title}</h1>
+        <div>
+            <p>{description2}</p>
+            <ul>
+                {tags.map((tag) => (
+                    <li>{tag}</li>
+                ))}
+            </ul>
+        </div>
+    </header>
+   <div class="container-video">
+        <div class="squeres"></div>
+        <div class="bg-black"></div>
+        <img src={`/${img}`} alt={title} transition:name={`img/${slug}`} id="image" />
+        <video src={`/${video}`} class="hide" autoplay id="video" controls></video>
+        <button class="button">See video</button>
+   </div>
+   <article class="content-container">
+        <div class="resume">
+            <h2>Resume</h2>
+            <Content />
+        </div>
+        <div class="buttons">
+            <a class="git" href="www.google.com">GitHub</a>
+            <a class="btn-website" href="https://www.instagram.com/vcdvsl/">Website</a>
+        </div>
+   </article>
+   <Footer />
 </Layout>
+
+<script>
+    const button = document.querySelector("button");
+    const image = document.querySelector("#image");
+    const video = document.querySelector("#video");
+
+    button.addEventListener("click", () => {
+        image.classList.toggle("hide");
+        video.classList.toggle("hide");
+        button.classList.toggle("hide");
+    });
+</script>
+
+<style>
+    .button{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 1rem 2rem;
+        background-color: #2ec21e;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-family: pixelFont;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        opacity: 0;
+        transition: all 0.3s;
+    }
+    .button:hover{
+        background-color: #23a705;
+    }
+    .header-work{
+        margin-top: 8rem;
+        padding-inline: 10rem;
+        display: flex;
+        flex-direction: column;
+    }
+    .header-work div{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    h1{
+        margin: 0;
+        font-size: 5rem;
+        font-family: clashBold;
+    }
+    ul{
+        display: flex;
+        list-style: none;
+        padding: 0;
+        gap: 1rem;
+    }
+    p{
+        font-size: 1.5rem;
+        font-family: pixelFont;
+    }
+    li{
+        padding: 1rem;
+        border: 1px solid #2ec21e;
+        border-radius: 5px;
+    }
+    img{
+        aspect-ratio: 96/44;
+        width: 100%;
+        margin-top: 2rem;
+        background-size: cover;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    video{
+        aspect-ratio: 96/44;
+        width: 100%;
+        margin-top: 2rem;
+        background-size: cover;
+        object-fit: cover;
+        border-radius: 5px;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    .container-video{
+        margin-inline: 10rem;
+        padding-bottom: 2rem;
+        position: relative;
+    }
+    .container-video:hover .button{
+        opacity: 1;
+    }
+    .bg-black{
+        position: absolute;
+        height: 110%;
+        width: 115%;
+        left: 50%; /* Posiciona el elemento en el centro horizontalmente */
+        background: radial-gradient(ellipse 60rem 30rem, #ffffff00, #0F0F0F);
+        transform: translateX(-50%); 
+        z-index: -1;
+    }
+    .squeres{
+        position: absolute;
+        z-index: -2;
+		height: 100%;
+		width: 115%; /* Ancho del 110% */
+        left: 50%; /* Posiciona el elemento en el centro horizontalmente */
+        transform: translateX(-50%); 
+		background-size: 40px 40px;
+		background-image:
+			linear-gradient(to right, grey 1px, transparent 1px),
+			linear-gradient(to bottom, grey 1px, transparent 1px);
+    }
+    .hide{
+        display: none;
+    }
+    .content-container{
+        margin-inline: 10rem;
+        margin-top: 2rem;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .resume{
+        padding-right: 10rem;
+    }
+    .buttons .btn-website {
+        border: solid 1px white;
+        transition-origin: center;
+        transition: color 0.3s, background 0.3s;
+
+    }
+    .buttons .btn-website:hover{
+        background: white;
+        color: black;
+    }
+    .buttons a{
+        color: white;
+        font-family: clash;
+        text-decoration: none;
+        padding-inline: 1.5rem;
+        padding-block: 1rem;
+        border-radius: 5px;
+        font-size: 1.5rem;
+    }
+    .git{
+        background: linear-gradient(180deg, #091CE8 0%,#172298 100%);
+        box-shadow: inset 0px 5px 9px #080e74;
+        box-shadow: inset 0px -5px 5px #3e41ff3f;
+    }
+    .git:hover{
+        background: linear-gradient(180deg, #3f4ef8 0%,#0b1cdd 100%);
+    }
+    .buttons{
+        display: flex;
+        gap: 2rem;
+        justify-content: center;
+        align-items: center;
+    }
+
+</style>
